@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { buildFolderName } from "../utils/slugify.js";
 import { logger } from "../utils/logger.js";
+import store from "../config/store.js";
 
 /**
  * Returns the absolute path to the problem folder.
@@ -13,7 +14,7 @@ import { logger } from "../utils/logger.js";
  * @returns {string}
  */
 export function resolveProblemPath(problem) {
-  const repoPath = process.env.PLACEMENT_REPO_PATH;
+  const repoPath = store.get("placementRepoPath") || process.env.PLACEMENT_REPO_PATH;
   if (!repoPath) {
     throw new Error(
       "PLACEMENT_REPO_PATH is not set in .env. " +

@@ -1,11 +1,15 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { logger } from "../utils/logger.js";
+import dotenv from "dotenv";
+dotenv.config();
+
+import store from "../config/store.js";
 
 let client = null;
 
 function getClient() {
   if (!client) {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = store.get("geminiKey") || process.env.GEMINI_API_KEY;
     if (!apiKey || apiKey === "your_gemini_api_key_here") {
       throw new Error(
         "GEMINI_API_KEY is not set. Copy .env.example → .env and add your key."

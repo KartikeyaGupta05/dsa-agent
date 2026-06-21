@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSA Agent</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>🚀 DSA Agent</h1>
+
+        <p class="subtitle">
+          Automate LeetCode Solutions → README → GitHub
+        </p>
+
+        <!-- SETTINGS SECTION -->
+        <div id="settingsSection" style="display: none;">
+          <h2>⚙️ First Time Setup</h2>
+
+          <div class="form-group">
+            <label>Gemini API Key</label>
+
+            <input
+              id="geminiKey"
+              type="text"
+              placeholder="AIzaSy..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Placement Repository Path</label>
+
+            <input
+              id="repoPath"
+              type="text"
+              placeholder="D:/placement_journey"
+            />
+          </div>
+
+          <button id="saveSettingsBtn">
+            Save Settings
+          </button>
+
+          <hr />
+
+        </div>
+
+        <!-- MAIN APP -->
+
+        <div class="form-group">
+          <label>LeetCode URL</label>
+
+          <input
+            type="text"
+            id="url"
+            placeholder="https://leetcode.com/problems/..."
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Java File</label>
+
+          <div class="file-row">
+
+            <input
+              type="text"
+              id="javaPath"
+              placeholder="Select Java File..."
+              readonly
+            />
+
+            <button id="browseBtn">
+              Browse
+            </button>
+
+          </div>
+        </div>
+
+        <button id="generateBtn">
+          Generate & Push
+        </button>
+
+        <div id="status"></div>
+
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

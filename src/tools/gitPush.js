@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import { logger } from "../utils/logger.js";
+import store from "../config/store.js";
 
 /**
  * Executes a shell command synchronously inside `cwd`.
@@ -40,12 +41,12 @@ function run(command, cwd) {
  * @returns {void}
  */
 export function gitPush(problem) {
-  const repoPath = process.env.PLACEMENT_REPO_PATH;
+  const repoPath = store.get("placementRepoPath") || process.env.PLACEMENT_REPO_PATH;
   if (!repoPath) {
     throw new Error("PLACEMENT_REPO_PATH is not set in .env.");
   }
 
-  const branch = process.env.GIT_BRANCH || "main";
+  const branch = "main" || process.env.GIT_BRANCH;
   const commitMsg = `Add ${problem.id} ${problem.title}`;
 
   logger.step("Running git operations…");

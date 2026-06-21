@@ -3,21 +3,37 @@
   "version": "1.0.0",
   "description": "AI Agent that automates maintaining a DSA GitHub repository using Gemini",
   "type": "module",
-  "main": "src/index.js",
+  "main": "electron/main.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.kartikeya.dsaagent",
+    "productName": "DSA Agent",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
+    "electron-store": "^11.0.2",
     "readline-sync": "^1.4.10"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "author": "Kartikeya",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
+  }
 }
